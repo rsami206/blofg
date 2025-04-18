@@ -31,7 +31,7 @@
                 <label for="email" class="form-label">Email address</label>
                 <input 
                     type="email" 
-                    class="form-control" id="email" name="email" value="{{ old('email') }}" required  autofocus >
+                    class="form-control" id="email" @error('email') email is-invalid    @enderror name="email" value="{{ old('email') }}" required  autofocus >
                 @error('email')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -65,7 +65,7 @@
             </div> --}}
 
             <div class="text-center">
-                Don't have an account? <a href="">Register here</a>
+                Don't have an account? <a href="{{ route('signupForm') }}">Register here</a>
             </div>
         </form>
     </div>
