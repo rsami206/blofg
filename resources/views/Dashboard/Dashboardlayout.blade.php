@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  @stack('style')
   <link rel="stylesheet" href="{{ asset("css/dashboard.css") }}">
 </head>
 <body>
@@ -14,12 +15,13 @@
 
       <!-- Sidebar -->
       <div class="col-md-3 col-lg-2 sidebar d-flex flex-column p-4">
-        <a class="navbar-brand fw-bold" href="#">Elegance</a>
+        <a class="navbar-brand fw-bold mb-3" href="/">Elegance</a>
         <nav class="nav flex-column">
           <a class="nav-link active" href="{{ route("dashboard.index") }}">Dashboard</a>
-          <a class="nav-link" href="">Blog Posts</a>
-          <a class="nav-link" href="#">Create Post</a>
-          <a class="nav-link" href="#">Comments</a>
+          <a class="nav-link" href="{{ route('post.index') }}">Blog Posts</a>
+          <a class="nav-link" href="{{ route('post.create') }}">Create Post</a>
+          <a class="nav-link" href="{{ route('category.index') }}">Categories</a>
+          <a class="nav-link" href="">Comments</a>
           <a class="nav-link" href="{{ route("setting") }}">Settings</a>
           <form method="POST" action="{{ route("logout") }}">
             @csrf
@@ -28,7 +30,7 @@
         </nav>
         <div class="mt-5 p-3 rounded bg-light text-center">
           <p class="mb-2">Want to write something?</p>
-          <a href="#" class="btn btn-primary btn-sm">+ New Draft</a>
+          <a href="{{ route('post.create') }}" class="btn btn-primary btn-sm">+ New Draft</a>
         </div>
       </div>
 
@@ -41,5 +43,6 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  @stack('script')
 </body>
 </html>

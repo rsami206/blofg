@@ -24,14 +24,20 @@
     <div class="login-box">
         <h2 class="text-center mb-4">Login to Your Account</h2>
 
-        <form method="POST" action="">
+        <form method="POST" action="{{ route('login') }}">
             @csrf
 
             <div class="mb-3">
                 <label for="email" class="form-label">Email address</label>
                 <input 
                     type="email" 
-                    class="form-control" id="email" @error('email') email is-invalid    @enderror name="email" value="{{ old('email') }}" required  autofocus >
+                    class="form-control @error('email') is-invalid @enderror" 
+                    id="email" 
+                    name="email" 
+                    value="{{ old('email') }}" 
+                    required 
+                    autofocus
+                >
                 @error('email')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -43,7 +49,11 @@
                 <label for="password" class="form-label">Password</label>
                 <input 
                     type="password" 
-                    class="form-control" id="password"  name="password" required >
+                    class="form-control @error('password') is-invalid @enderror" 
+                    id="password" 
+                    name="password" 
+                    required
+                >
                 @error('password')
                     <div class="invalid-feedback">
                         {{ $message }}

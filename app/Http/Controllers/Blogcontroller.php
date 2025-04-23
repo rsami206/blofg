@@ -2,15 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class Blogcontroller extends Controller
 {
     public function index(){
-        return view('blog.index');
+        $posts = Post::all();
+        return view('blog.index',['posts'=> $posts]);
     }
-    public function single(){
-        return view('blog.single');
+    public function single($id){
+$post = Post::findOrFail($id);
+
+        return view('blog.single',["post"=>$post]);
     }
         
 }

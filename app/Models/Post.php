@@ -7,5 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    use HasFactory;
+    protected $fillable = ['title','Excerpt', 'content', 'photo_path', 'user_id', 'category_id'];
+
+    // one to one relation
+
+    public function user(){
+        return $this->belongsTo(user::class);
+    }
 }
