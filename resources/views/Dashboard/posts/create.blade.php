@@ -18,6 +18,19 @@
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
     </div>
+    {{-- category --}}
+    <div class="mb-3">
+        <label for="category" class="form-label">category:</label>
+        <select name="category_id" class="form-select @error('category_id') is-invalid @enderror">
+            @foreach ($cats as $cat )
+
+                <option value="{{ $cat->id }}">{{$cat->name}}</option>
+            @endforeach
+        </select>
+        @error('category_id')
+            <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
+    </div>
      {{-- Excerpt --}}
      <div class="mb-3">
         <label for="Excerpt" class="form-label">Excerpt:</label>

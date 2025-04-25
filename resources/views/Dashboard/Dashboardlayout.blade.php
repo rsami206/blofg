@@ -5,7 +5,9 @@
   <title>Blog Dashboard</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Bootstrap 5 -->
+  
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css" />
   @stack('style')
   <link rel="stylesheet" href="{{ asset("css/dashboard.css") }}">
 </head>
@@ -20,7 +22,9 @@
           <a class="nav-link active" href="{{ route("dashboard.index") }}">Dashboard</a>
           <a class="nav-link" href="{{ route('post.index') }}">Blog Posts</a>
           <a class="nav-link" href="{{ route('post.create') }}">Create Post</a>
+          @if (auth()->user()->role == 'admin')
           <a class="nav-link" href="{{ route('category.index') }}">Categories</a>
+        @endif
           <a class="nav-link" href="">Comments</a>
           <a class="nav-link" href="{{ route("setting") }}">Settings</a>
           <form method="POST" action="{{ route("logout") }}">
@@ -44,5 +48,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   @stack('script')
+<script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
 </body>
 </html>

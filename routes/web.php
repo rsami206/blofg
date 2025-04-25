@@ -42,8 +42,9 @@ Route::post('/posts/store',[postcontroller::class,'poststore'])->name('post.stor
 Route::get('/posts/delete/{id}',[postcontroller::class,'postdelete'])->name('post.delete');
 });
 
-Route::middleware(['auth'])->prefix('/dashboard')->group(function(){
+Route::middleware(['auth','is_admin'])->prefix('/dashboard')->group(function(){
    Route::get('/cats', [categorycontroller::class,'index'])->name('category.index');
    Route::get('/cats/create', [categorycontroller::class,'create'])->name('cats.create');
    Route::post('/cats/store', [categorycontroller::class,'store'])->name('cats.store');
+   Route::get('/cats/delete/{id}',[categorycontroller::class,'destroy'])->name('cat.delete');
 });

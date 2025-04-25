@@ -27,7 +27,7 @@
                     <td>{{ $cat->name }}</td>
                     <td>
                         <a href="#" class="btn btn-sm btn-warning me-1">Edit</a>
-                        <a href="" class="btn btn-sm btn-danger me-1">Delete</a>
+                        <a href={{ route('cat.delete',$cat->id) }} class="btn btn-sm btn-danger me-1">Delete</a>
                         {{-- <a href={{ route("post.delete" , ) }} class= 'btn btn-sm btn-danger'>delete</a> --}}
 
 

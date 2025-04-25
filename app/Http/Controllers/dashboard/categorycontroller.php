@@ -92,6 +92,11 @@ class categorycontroller extends Controller
      */
     public function destroy($id)
     {
-        //
+    $user_id = Category::FindOrFail($id);
+   
+    if($user_id != null){
+        $user_id->delete();
+        return redirect()->route("category.index")->with("success","successfully deleted");;
+    }
     }
 }
